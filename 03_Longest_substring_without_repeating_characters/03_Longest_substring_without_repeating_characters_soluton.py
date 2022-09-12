@@ -1,24 +1,32 @@
-# https://leetcode.com/problems/longest-common-prefix/
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 
 class Solution(object):
-    def longestCommonPrefix(self, strs):
+    def lengthOfLongestSubstring(self, s):
         """
-        :type strs: List[str]
-        :rtype: str
+        :type s: str
+        :rtype: int
         """
-        if not strs:
-            return ""
-        sorted_strs = sorted(strs)
-        start = sorted_strs[0]
-        end = sorted_strs[-1]
-        i = 0
-        while i < len(start):
-            if start[i] == end[i]:
-                i += 1
-            else:
-                break
-        if i > 0:
-            return start[:i]
-        else:
-            return ""
+        # section_s_first = []
+        # i = 0
+        # for symbol in s:
+        #     section_s_second = []
+        #     for symbol in s[i:]:
+        #         if symbol not in section_s_second:
+        #             section_s_second.append(symbol)
+        #         else:
+        #             break
+        #     if len(section_s_second) > len(section_s_first):
+        #         section_s_first = section_s_second
+        #     i += 1
+        # return len(section_s_first)
+
+        length = 0
+        new_s = ""
+        for symbol in s:
+            if symbol in new_s:
+                new_s = new_s[new_s.index(symbol) + 1:]
+            new_s = new_s + symbol
+            if length < len(new_s):
+                length = len(new_s)
+        return length
