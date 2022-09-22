@@ -5,9 +5,7 @@ class Solution:
         d = {}
         for i in nums:
             if i in d:
-                d[i] += 1
-                if d[i] == 2:
-                    return True
+                return True
             else:
                 d[i] = 1
 
